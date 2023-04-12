@@ -1,6 +1,11 @@
 using SharelyTodoList;
+using SharelyTodoList.Repositories;
+using SharelyTodoList.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<TaskGroupRepository>();
+builder.Services.AddScoped<TaskGroupService>();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

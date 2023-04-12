@@ -1,12 +1,11 @@
-﻿namespace SharelyTodoList.Models.TaskGroup;
+﻿namespace SharelyTodoList.DTOs.TaskGroupApiDto;
 
-public class TaskGroup
+public class TaskGroupCreateRequest
 {
-    public long Id { get; set; }
     public string Name { get; set; }
     public string Password { get; set; }
 
-    public TaskGroup()
+    public TaskGroupCreateRequest()
     {
         Name = string.Empty;
         Password = string.Empty;
