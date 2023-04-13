@@ -12,19 +12,19 @@ public class TaskGroupService
         _taskGroupRepository = taskGroupRepository;
     }
 
-    public TaskGroup GetById(long id)
+    public Group GetById(long id)
     {
         return _taskGroupRepository.GetById(id);
     }
 
     public long CreateTaskGroup(string name, string password)
     {
-        TaskGroup newTaskGroup = new TaskGroup()
+        Group newGroup = new Group()
         {
             Name = name,
             Password = password
         };
 
-        return _taskGroupRepository.Create(newTaskGroup);
+        return _taskGroupRepository.Create(newGroup);
     }
 }

@@ -16,28 +16,28 @@ public class TaskGroupController : BaseController
     }
 
     [HttpGet("{id}")]
-    public TaskGroupPreviewResponse GetByIdPreview(long id)
+    public GroupPreviewResponse GetByIdPreview(long id)
     {
         HttpContext.Response.Headers
             .AddPasswordRequired();
 
-        TaskGroup existsTaskGroup = _taskGroupService
+        Group existsGroup = _taskGroupService
             .GetById(id);
 
-        return new TaskGroupPreviewResponse()
+        return new GroupPreviewResponse()
         {
             Id = id,
-            Name = existsTaskGroup.Name
+            Name = existsGroup.Name
         };
     }
 
     [HttpPost]
-    public TaskGroupCreatedResponse CreateTaskGroup([FromBody] TaskGroupCreateRequest request)
+    public GroupCreatedResponse CreateTaskGroup([FromBody] GroupCreateRequest request)
     {
         long idNewTaskGroup = _taskGroupService
             .CreateTaskGroup(request.Name, request.Password);
 
-        return new TaskGroupCreatedResponse()
+        return new GroupCreatedResponse()
         {
             Id = idNewTaskGroup
         };

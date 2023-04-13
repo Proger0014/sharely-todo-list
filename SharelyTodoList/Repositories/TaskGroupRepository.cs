@@ -11,18 +11,18 @@ public class TaskGroupRepository
         _dbContext = dbContext;
     }
 
-    public TaskGroup? GetById(long id)
+    public Group? GetById(long id)
     {
         return _dbContext.TaskGroups
             .SingleOrDefault(tgs => tgs.Id == id);
     }
 
     /// <returns>Возвращает id только что добавленного в бд task group</returns>
-    public long Create(TaskGroup taskGroup)
+    public long Create(Group group)
     {
-        _dbContext.TaskGroups.Add(taskGroup);
+        _dbContext.TaskGroups.Add(group);
         _dbContext.SaveChanges();
 
-        return taskGroup.Id;
+        return group.Id;
     }
 }

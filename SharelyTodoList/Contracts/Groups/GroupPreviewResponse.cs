@@ -1,11 +1,11 @@
 ﻿namespace SharelyTodoList.DTOs.TaskGroupApiDto;
 
-public class TaskGroupPreviewResponse
+public class GroupPreviewResponse
 {
     public long Id { get; set; }
     public string Name { get; set; }
 
-    public TaskGroupPreviewResponse()
+    public GroupPreviewResponse()
     {
         Name = string.Empty;
     }

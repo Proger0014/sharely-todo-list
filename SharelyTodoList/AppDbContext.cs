@@ -12,12 +12,12 @@ public class AppDbContext : DbContext
         _configuration = configuration;
     }
 
-    public DbSet<TaskGroup> TaskGroups { get; set; }
+    public DbSet<Group> TaskGroups { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        new TaskGroupTypeConfiguration()
-            .Configure(modelBuilder.Entity<TaskGroup>());
+        new GroupTypeConfiguration()
+            .Configure(modelBuilder.Entity<Group>());
     }
 
     protected override void OnConfiguring(

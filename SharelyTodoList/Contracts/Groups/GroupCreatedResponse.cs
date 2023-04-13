@@ -1,6 +1,6 @@
 ﻿namespace SharelyTodoList.DTOs.TaskGroupApiDto;
 
-public class TaskGroupCreatedResponse
+public class GroupCreatedResponse
 {
     public long Id { get; set; }
 }
