@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace SharelyTodoList.Models.TaskGroup;
+namespace SharelyTodoList.Models.Group;
 
 public class GroupTypeConfiguration : IEntityTypeConfiguration<Group>
 {

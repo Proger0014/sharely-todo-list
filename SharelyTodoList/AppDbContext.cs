@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SharelyTodoList.Models.TaskGroup;
+using SharelyTodoList.Models.Group;
 
 namespace SharelyTodoList;
 

@@ -1,4 +1,4 @@
-﻿namespace SharelyTodoList.Models.TaskGroup;
+﻿namespace SharelyTodoList.Models.Group;
 
 public class Group
 {

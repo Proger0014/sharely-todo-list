@@ -1,4 +1,4 @@
-﻿using SharelyTodoList.Models.TaskGroup;
+﻿using SharelyTodoList.Models.Group;
 
 namespace SharelyTodoList.Repositories;
 

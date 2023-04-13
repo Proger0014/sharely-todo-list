@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using SharelyTodoList.Models.TaskGroup;
+using SharelyTodoList.Models.Group;
 using SharelyTodoList.DTOs.TaskGroupApiDto;
 using SharelyTodoList.Services;
 using SharelyTodoList.Extensions;
