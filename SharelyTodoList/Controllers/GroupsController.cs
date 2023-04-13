@@ -8,11 +8,11 @@ namespace SharelyTodoList.Controllers;
 
 public class GroupsController : BaseController
 {
-    private readonly TaskGroupService _taskGroupService;
+    private readonly GroupService _groupService;
 
-    public GroupsController(TaskGroupService taskGroupService)
+    public GroupsController(GroupService groupService)
     {
-        _taskGroupService = taskGroupService;
+        _groupService = groupService;
     }
 
     [HttpGet("{id}")]
@@ -21,7 +21,7 @@ public class GroupsController : BaseController
         HttpContext.Response.Headers
             .AddPasswordRequired();
 
-        Group existsGroup = _taskGroupService
+        Group existsGroup = _groupService
             .GetById(id);
 
         return new GroupPreviewResponse()
@@ -34,7 +34,7 @@ public class GroupsController : BaseController
     [HttpPost]
     public GroupCreatedResponse CreateTaskGroup([FromBody] GroupCreateRequest request)
     {
-        long idNewTaskGroup = _taskGroupService
+        long idNewTaskGroup = _groupService
             .CreateTaskGroup(request.Name, request.Password);
 
         return new GroupCreatedResponse()

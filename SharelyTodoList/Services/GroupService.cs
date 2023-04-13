@@ -3,18 +3,18 @@ using SharelyTodoList.Repositories;
 
 namespace SharelyTodoList.Services;
 
-public class TaskGroupService
+public class GroupService
 {
-    private readonly TaskGroupRepository _taskGroupRepository;
+    private readonly GroupRepository _groupRepository;
 
-    public TaskGroupService(TaskGroupRepository taskGroupRepository)
+    public GroupService(GroupRepository groupRepository)
     {
-        _taskGroupRepository = taskGroupRepository;
+        _groupRepository = groupRepository;
     }
 
     public Group GetById(long id)
     {
-        return _taskGroupRepository.GetById(id);
+        return _groupRepository.GetById(id);
     }
 
     public long CreateTaskGroup(string name, string password)
@@ -25,6 +25,6 @@ public class TaskGroupService
             Password = password
         };
 
-        return _taskGroupRepository.Create(newGroup);
+        return _groupRepository.Create(newGroup);
     }
 }

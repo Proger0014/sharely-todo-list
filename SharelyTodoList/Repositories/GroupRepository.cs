@@ -2,11 +2,11 @@
 
 namespace SharelyTodoList.Repositories;
 
-public class TaskGroupRepository
+public class GroupRepository
 {
     private readonly AppDbContext _dbContext;
 
-    public TaskGroupRepository(AppDbContext dbContext)
+    public GroupRepository(AppDbContext dbContext)
     {
         _dbContext = dbContext;
     }
