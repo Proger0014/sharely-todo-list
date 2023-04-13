@@ -1,9 +1,10 @@
-﻿using SharelyTodoList.Models.Group;
+﻿using SharelyTodoList.Interfaces.Services;
+using SharelyTodoList.Models.Group;
 using SharelyTodoList.Repositories;
 
 namespace SharelyTodoList.Services;
 
-public class GroupService
+public class GroupService : IGroupService
 {
     private readonly GroupRepository _groupRepository;
 
@@ -17,7 +18,7 @@ public class GroupService
         return _groupRepository.GetById(id);
     }
 
-    public long CreateTaskGroup(string name, string password)
+    public long CreateGroup(string name, string password)
     {
         Group newGroup = new Group()
         {

@@ -35,7 +35,7 @@ public class GroupsController : BaseController
     public GroupCreatedResponse CreateTaskGroup([FromBody] GroupCreateRequest request)
     {
         long idNewTaskGroup = _groupService
-            .CreateTaskGroup(request.Name, request.Password);
+            .CreateGroup(request.Name, request.Password);
 
         return new GroupCreatedResponse()
         {
