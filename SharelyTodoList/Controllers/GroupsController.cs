@@ -6,11 +6,11 @@ using SharelyTodoList.Extensions;
 
 namespace SharelyTodoList.Controllers;
 
-public class TaskGroupController : BaseController
+public class GroupsController : BaseController
 {
     private readonly TaskGroupService _taskGroupService;
 
-    public TaskGroupController(TaskGroupService taskGroupService)
+    public GroupsController(TaskGroupService taskGroupService)
     {
         _taskGroupService = taskGroupService;
     }
