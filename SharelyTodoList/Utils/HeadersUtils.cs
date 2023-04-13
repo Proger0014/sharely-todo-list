@@ -2,8 +2,8 @@
 
 public static class HeadersUtils
 {
-    public static void PasswordRequired(IHeaderDictionary headers)
+    public static void WithoutPassword(IHeaderDictionary headers)
     {
-        headers.Add("password-required", "1");
+        headers.Add("without-password", "1");
     }
 }

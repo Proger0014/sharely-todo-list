@@ -4,8 +4,8 @@ namespace SharelyTodoList.Extensions;
 
 public static class HeadersExtensions
 {
-    public static void AddPasswordRequired(this IHeaderDictionary headers)
+    public static void AddWithoutPassword(this IHeaderDictionary headers)
     {
-        HeadersUtils.PasswordRequired(headers);
+        HeadersUtils.WithoutPassword(headers);
     }
 }

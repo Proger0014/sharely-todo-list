@@ -19,7 +19,7 @@ public class GroupsController : BaseController
     public GroupPreviewResponse GetByIdPreview(long id)
     {
         HttpContext.Response.Headers
-            .AddPasswordRequired();
+            .AddWithoutPassword();
 
         Group existsGroup = _groupService
             .GetById(id);
