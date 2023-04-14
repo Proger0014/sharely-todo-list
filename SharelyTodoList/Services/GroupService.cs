@@ -1,4 +1,6 @@
-﻿using SharelyTodoList.Interfaces.Services;
+﻿using SharelyTodoList.Constants;
+using SharelyTodoList.Exceptions;
+using SharelyTodoList.Interfaces.Services;
 using SharelyTodoList.Models.Group;
 using SharelyTodoList.Repositories;
 
@@ -15,7 +17,15 @@ public class GroupService : IGroupService
 
     public Group GetById(long id)
     {
-        return _groupRepository.GetById(id);
+        var existsGroup =  _groupRepository.GetById(id);
+
+        if (existsGroup is null)
+        {
+            throw new EntityNotFoundException(string.Format(
+                ExceptionMessages.GROUP_NOT_FOUND, nameof(Group), id));
+        }
+
+        return existsGroup;
     }
 
     public long CreateGroup(string name, string password)

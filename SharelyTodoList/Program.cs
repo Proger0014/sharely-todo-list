@@ -1,4 +1,5 @@
 using SharelyTodoList;
+using SharelyTodoList.Extensions;
 using SharelyTodoList.Repositories;
 using SharelyTodoList.Services;
 
@@ -25,6 +26,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseGlobalHandlingExceptions();
 
 app.MapControllers();
 
