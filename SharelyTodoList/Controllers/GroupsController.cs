@@ -18,9 +18,6 @@ public class GroupsController : BaseController
     [HttpGet("{id}")]
     public GroupPreviewResponse GetByIdPreview(long id)
     {
-        HttpContext.Response.Headers
-            .AddWithoutPassword();
-
         Group existsGroup = _groupService
             .GetById(id);
 
@@ -32,7 +29,7 @@ public class GroupsController : BaseController
     }
 
     [HttpPost]
-    public GroupCreatedResponse CreateTaskGroup([FromBody] GroupCreateRequest request)
+    public GroupCreatedResponse CreateGroup([FromBody] GroupCreateRequest request)
     {
         long idNewTaskGroup = _groupService
             .CreateGroup(request.Name, request.Password);
