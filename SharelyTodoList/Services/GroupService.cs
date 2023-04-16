@@ -22,7 +22,7 @@ public class GroupService : IGroupService
         if (existsGroup is null)
         {
             throw new EntityNotFoundException(string.Format(
-                ExceptionMessages.GROUP_NOT_FOUND, nameof(Group), groupId));
+                ExceptionMessages.EntityNotFound, nameof(Group), groupId));
         }
 
         return existsGroup;
