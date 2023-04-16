@@ -1,16 +1,16 @@
 ﻿using SharelyTodoList.Constants;
 using SharelyTodoList.Exceptions;
+using SharelyTodoList.Interfaces.Repositories;
 using SharelyTodoList.Interfaces.Services;
 using SharelyTodoList.Models.Group;
-using SharelyTodoList.Repositories;
 
 namespace SharelyTodoList.Services;
 
 public class GroupService : IGroupService
 {
-    private readonly GroupRepository _groupRepository;
+    private readonly IGroupRepository _groupRepository;
 
-    public GroupService(GroupRepository groupRepository)
+    public GroupService(IGroupRepository groupRepository)
     {
         _groupRepository = groupRepository;
     }

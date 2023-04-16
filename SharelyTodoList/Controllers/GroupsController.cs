@@ -1,16 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SharelyTodoList.Models.Group;
 using SharelyTodoList.DTOs.TaskGroupApiDto;
-using SharelyTodoList.Services;
-using SharelyTodoList.Extensions;
+using SharelyTodoList.Interfaces.Services;
 
 namespace SharelyTodoList.Controllers;
 
 public class GroupsController : BaseController
 {
-    private readonly GroupService _groupService;
+    private readonly IGroupService _groupService;
 
-    public GroupsController(GroupService groupService)
+    public GroupsController(IGroupService groupService)
     {
         _groupService = groupService;
     }
