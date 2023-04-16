@@ -1,5 +1,6 @@
 ﻿using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.WebUtilities;
 using SharelyTodoList.Exceptions;
 
 namespace SharelyTodoList.Utils;
@@ -14,6 +15,7 @@ public static class MiddlewaresUtils
         var responseBody = new ProblemDetails()
         {
             Status = (int)apiException.StatusCode,
+            Title = ReasonPhrases.GetReasonPhrase((int)apiException.StatusCode),
             Detail = apiException.Message
         };
 
