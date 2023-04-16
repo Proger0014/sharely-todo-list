@@ -15,7 +15,7 @@ public class GroupRepository : IGroupRepository
 
     public async Task<Group?> GetById(long groupId)
     {
-        return await _dbContext.TaskGroups?
+        return await _dbContext.Groups?
             .AsNoTracking()
             .SingleOrDefaultAsync(tgs => tgs.Id == groupId)!;
     }
@@ -23,7 +23,7 @@ public class GroupRepository : IGroupRepository
     /// <returns>Возвращает id только что добавленного в бд group</returns>
     public async Task<long> Create(Group newGroup)
     {
-        _dbContext.TaskGroups?
+        _dbContext.Groups?
             .Add(newGroup);
         await _dbContext.SaveChangesAsync();
 
