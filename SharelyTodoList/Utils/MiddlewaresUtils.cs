@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using SharelyTodoList.Contracts.ErrorDetail;
+using Microsoft.AspNetCore.Mvc;
 using SharelyTodoList.Exceptions;
 using SharelyTodoList.Interfaces;
 
@@ -12,10 +12,10 @@ public static class MiddlewaresUtils
         context.Response.ContentType = "application/json";
         context.Response.StatusCode = (int)apiException.StatusCode;
 
-        var responseBody = new ErrorDetail()
+        var responseBody = new ProblemDetails()
         {
-            StatusCode = (int)apiException.StatusCode,
-            Message = apiException.Message
+            Status = (int)apiException.StatusCode,
+            Detail = apiException.Message
         };
 
         string responseBodyString = JsonSerializer.Serialize(responseBody);
