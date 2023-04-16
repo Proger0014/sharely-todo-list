@@ -4,6 +4,6 @@ namespace SharelyTodoList.Interfaces.Services;
 
 public interface IGroupService
 {
-    Group GetById(long groupId);
-    long CreateGroup(string name, string password);
+    Task<Group> GetById(long groupId);
+    Task<long> CreateGroup(string name, string password);
 }

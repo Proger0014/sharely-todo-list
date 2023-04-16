@@ -13,19 +13,19 @@ public class GroupRepository : IGroupRepository
         _dbContext = dbContext;
     }
 
-    public Group? GetById(long groupId)
+    public async Task<Group?> GetById(long groupId)
     {
-        return _dbContext.TaskGroups?
+        return await _dbContext.TaskGroups?
             .AsNoTracking()
-            .SingleOrDefault(tgs => tgs.Id == groupId);
+            .SingleOrDefaultAsync(tgs => tgs.Id == groupId)!;
     }
 
     /// <returns>Возвращает id только что добавленного в бд group</returns>
-    public long Create(Group newGroup)
+    public async Task<long> Create(Group newGroup)
     {
         _dbContext.TaskGroups?
             .Add(newGroup);
-        _dbContext.SaveChanges();
+        await _dbContext.SaveChangesAsync();
 
         return newGroup.Id;
     }

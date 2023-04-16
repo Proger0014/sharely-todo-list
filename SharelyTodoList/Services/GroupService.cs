@@ -15,9 +15,9 @@ public class GroupService : IGroupService
         _groupRepository = groupRepository;
     }
 
-    public Group GetById(long groupId)
+    public async Task<Group> GetById(long groupId)
     {
-        var existsGroup =  _groupRepository.GetById(groupId);
+        var existsGroup =  await _groupRepository.GetById(groupId);
 
         if (existsGroup is null)
         {
@@ -28,7 +28,7 @@ public class GroupService : IGroupService
         return existsGroup;
     }
 
-    public long CreateGroup(string name, string password)
+    public async Task<long> CreateGroup(string name, string password)
     {
         var newGroup = new Group()
         {
@@ -36,6 +36,6 @@ public class GroupService : IGroupService
             Password = password
         };
 
-        return _groupRepository.Create(newGroup);
+        return await _groupRepository.Create(newGroup);
     }
 }

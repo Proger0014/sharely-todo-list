@@ -15,9 +15,9 @@ public class GroupsController : BaseController
     }
 
     [HttpGet("{groupId}")]
-    public GroupPreviewResponse GetByIdPreview(long groupId)
+    public async Task<GroupPreviewResponse> GetByIdPreview(long groupId)
     {
-        Group existsGroup = _groupService
+        Group existsGroup = await _groupService
             .GetById(groupId);
 
         return new GroupPreviewResponse()
@@ -28,9 +28,9 @@ public class GroupsController : BaseController
     }
 
     [HttpPost]
-    public GroupCreatedResponse CreateGroup([FromBody] GroupCreateRequest request)
+    public async Task<GroupCreatedResponse> CreateGroup([FromBody] GroupCreateRequest request)
     {
-        long idNewTaskGroup = _groupService
+        long idNewTaskGroup = await _groupService
             .CreateGroup(request.Name, request.Password);
 
         return new GroupCreatedResponse()
