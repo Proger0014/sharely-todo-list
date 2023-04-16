@@ -1,3 +1,4 @@
+using Microsoft.EntityFrameworkCore;
 using SharelyTodoList;
 using SharelyTodoList.Extensions;
 using SharelyTodoList.Interfaces.Repositories;
@@ -12,7 +13,13 @@ builder.Services.AddScoped<IGroupService, GroupService>();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddDbContext<AppDbContext>();
+builder.Services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseInMemoryDatabase(
+        databaseName: builder.Configuration["InMemoryDb:Name"] ?? "sharely-todo-list-db");
+    options.UseSnakeCaseNamingConvention();
+});
+
 builder.Services.AddControllers();
 builder.Services.AddRouting(options => options.LowercaseUrls = true);
 builder.Services.AddEndpointsApiExplorer();
