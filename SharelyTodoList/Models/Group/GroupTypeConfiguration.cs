@@ -7,6 +7,6 @@ public class GroupTypeConfiguration : IEntityTypeConfiguration<Group>
 {
     public void Configure(EntityTypeBuilder<Group> builder)
     {
-        builder.HasKey(tg => tg.Id);
+        builder.HasKey(g => g.Id);
     }
 }

@@ -4,6 +4,6 @@ namespace SharelyTodoList.Interfaces.Repositories;
 
 public interface IGroupRepository
 {
-    Group? GetById(long id);
+    Group? GetById(long groupId);
     long Create(Group newGroup);
 }

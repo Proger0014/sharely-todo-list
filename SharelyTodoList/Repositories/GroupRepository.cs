@@ -12,10 +12,10 @@ public class GroupRepository : IGroupRepository
         _dbContext = dbContext;
     }
 
-    public Group? GetById(long id)
+    public Group? GetById(long groupId)
     {
         return _dbContext.TaskGroups
-            .SingleOrDefault(tgs => tgs.Id == id);
+            .SingleOrDefault(tgs => tgs.Id == groupId);
     }
 
     /// <returns>Возвращает id только что добавленного в бд group</returns>

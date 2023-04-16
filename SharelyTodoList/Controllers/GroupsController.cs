@@ -14,15 +14,15 @@ public class GroupsController : BaseController
         _groupService = groupService;
     }
 
-    [HttpGet("{id}")]
-    public GroupPreviewResponse GetByIdPreview(long id)
+    [HttpGet("{groupId}")]
+    public GroupPreviewResponse GetByIdPreview(long groupId)
     {
         Group existsGroup = _groupService
-            .GetById(id);
+            .GetById(groupId);
 
         return new GroupPreviewResponse()
         {
-            Id = id,
+            Id = groupId,
             Name = existsGroup.Name
         };
     }

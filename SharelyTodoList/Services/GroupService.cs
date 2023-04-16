@@ -15,14 +15,14 @@ public class GroupService : IGroupService
         _groupRepository = groupRepository;
     }
 
-    public Group GetById(long id)
+    public Group GetById(long groupId)
     {
-        var existsGroup =  _groupRepository.GetById(id);
+        var existsGroup =  _groupRepository.GetById(groupId);
 
         if (existsGroup is null)
         {
             throw new EntityNotFoundException(string.Format(
-                ExceptionMessages.GROUP_NOT_FOUND, nameof(Group), id));
+                ExceptionMessages.GROUP_NOT_FOUND, nameof(Group), groupId));
         }
 
         return existsGroup;
@@ -30,7 +30,7 @@ public class GroupService : IGroupService
 
     public long CreateGroup(string name, string password)
     {
-        Group newGroup = new Group()
+        var newGroup = new Group()
         {
             Name = name,
             Password = password
