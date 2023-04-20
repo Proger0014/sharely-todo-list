@@ -4,4 +4,4 @@ namespace SharelyTodoList.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public abstract class BaseController : ControllerBase { }
+public abstract class BaseApiController : ControllerBase { }

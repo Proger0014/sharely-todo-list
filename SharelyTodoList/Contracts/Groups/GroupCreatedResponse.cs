@@ -1,4 +1,4 @@
-﻿namespace SharelyTodoList.DTOs.TaskGroupApiDto;
+﻿namespace SharelyTodoList.Contracts.Groups;
 
 public class GroupCreatedResponse
 {

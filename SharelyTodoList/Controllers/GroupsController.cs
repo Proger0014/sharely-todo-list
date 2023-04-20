@@ -1,41 +1,68 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using SharelyTodoList.Validators;
+using FluentValidation.AspNetCore;
+using FluentValidation.Results;
+using Microsoft.AspNetCore.Mvc;
+using SharelyTodoList.Contracts.Groups;
+using SharelyTodoList.Contracts.Groups.GroupCreateRequest;
+using SharelyTodoList.Contracts.IdQueryParameter;
 using SharelyTodoList.Models.Group;
-using SharelyTodoList.DTOs.TaskGroupApiDto;
 using SharelyTodoList.Interfaces.Services;
 
 namespace SharelyTodoList.Controllers;
 
-public class GroupsController : BaseController
+public class GroupsController : BaseApiController
 {
     private readonly IGroupService _groupService;
-
-    public GroupsController(IGroupService groupService)
+    private readonly BaseValidators<Group> _groupValidators;
+    
+    public GroupsController(IGroupService groupService, BaseValidators<Group> groupValidators)
     {
         _groupService = groupService;
+        _groupValidators = groupValidators;
     }
 
     [HttpGet("{groupId}")]
-    public async Task<GroupPreviewResponse> GetByIdPreview(long groupId)
+    public async Task<IActionResult> GetByIdPreview(long groupId)
     {
+        ValidationResult result = await _groupValidators
+            .Validate(new IdQueryParameterRequest()
+                {
+                    Id = groupId
+                });
+
+        if (!result.IsValid)
+        {
+            result.AddToModelState(ModelState);
+            return ValidationProblem();
+        }
+        
         Group existsGroup = await _groupService
             .GetById(groupId);
 
-        return new GroupPreviewResponse()
+        return Ok(new GroupPreviewResponse()
         {
             Id = groupId,
             Name = existsGroup.Name
-        };
+        });
     }
 
     [HttpPost]
-    public async Task<GroupCreatedResponse> CreateGroup([FromBody] GroupCreateRequest request)
+    public async Task<IActionResult> CreateGroup([FromBody] GroupCreateRequest request)
     {
+        ValidationResult result = await _groupValidators.Validate(request);
+
+        if (!result.IsValid)
+        {
+            result.AddToModelState(ModelState);
+            return ValidationProblem();
+        }
+        
         long idNewTaskGroup = await _groupService
             .CreateGroup(request.Name, request.Password);
 
-        return new GroupCreatedResponse()
+        return Ok(new GroupCreatedResponse()
         {
             Id = idNewTaskGroup
-        };
+        });
     }
 }
