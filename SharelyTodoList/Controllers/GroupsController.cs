@@ -3,8 +3,8 @@ using FluentValidation.AspNetCore;
 using FluentValidation.Results;
 using Microsoft.AspNetCore.Mvc;
 using SharelyTodoList.Contracts.Groups;
+using SharelyTodoList.Contracts.Groups.GetByIdPreviewRequest;
 using SharelyTodoList.Contracts.Groups.GroupCreateRequest;
-using SharelyTodoList.Contracts.IdQueryParameter;
 using SharelyTodoList.Models.Group;
 using SharelyTodoList.Interfaces.Services;
 
@@ -25,9 +25,9 @@ public class GroupsController : BaseApiController
     public async Task<IActionResult> GetByIdPreview(long groupId)
     {
         ValidationResult result = await _groupValidators
-            .Validate(new IdQueryParameterRequest()
+            .Validate(new GetByIdPreviewRequest()
                 {
-                    Id = groupId
+                    GroupId = groupId
                 });
 
         if (!result.IsValid)
@@ -47,7 +47,7 @@ public class GroupsController : BaseApiController
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateGroup([FromBody] GroupCreateRequest request)
+    public async Task<IActionResult> CreateGroup([FromBody] CreateGroupRequest request)
     {
         ValidationResult result = await _groupValidators.Validate(request);
 

@@ -3,11 +3,11 @@ using SharelyTodoList.Utils;
 
 namespace SharelyTodoList.Contracts.Groups.GroupCreateRequest;
 
-public class GroupCreateRequestRules : AbstractValidator<GroupCreateRequest>
+public class CreateGroupRequestRules : AbstractValidator<CreateGroupRequest>
 {
-    public GroupCreateRequestRules()
+    public CreateGroupRequestRules()
     {
-        RuleFor(g => g.Name)
+        RuleFor(target => target.Name)
             .NotNull()
             .WithMessage(ValidationErrorUtils.GetMessageFrom(ValidationErrorType.NotNull, "Name"))
             .Length(10)
