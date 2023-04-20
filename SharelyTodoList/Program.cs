@@ -1,6 +1,5 @@
 using Microsoft.EntityFrameworkCore;
 using SharelyTodoList;
-using SharelyTodoList.Contracts.IdQueryParameter;
 using SharelyTodoList.Extensions;
 using SharelyTodoList.Interfaces.Repositories;
 using SharelyTodoList.Interfaces.Services;

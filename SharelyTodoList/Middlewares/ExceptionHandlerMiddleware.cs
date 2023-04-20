@@ -1,6 +1,5 @@
 ﻿using SharelyTodoList.Exceptions;
 using SharelyTodoList.Extensions;
-using SharelyTodoList.Interfaces;
 
 namespace SharelyTodoList.Middlewares;
 
