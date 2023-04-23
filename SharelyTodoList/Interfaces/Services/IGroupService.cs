@@ -6,4 +6,5 @@ public interface IGroupService
 {
     Task<Group> GetById(long groupId);
     Task<long> CreateGroup(string name, string password);
+    Task<bool> IsValidPassword(long groupId, string password);
 }

@@ -29,4 +29,13 @@ public class GroupRepository : IGroupRepository
 
         return newGroup.Id;
     }
+
+    public async Task<bool> IsValidPassword(long groupId, string password)
+    {
+        Group? existsGroup = await _dbContext.Groups.AsNoTracking()
+            .Where(group => group.Id == groupId && group.Password == password)
+            .FirstOrDefaultAsync();
+
+        return existsGroup is not null;
+    }
 }

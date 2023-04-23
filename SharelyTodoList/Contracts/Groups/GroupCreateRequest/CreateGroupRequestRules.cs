@@ -10,7 +10,7 @@ public class CreateGroupRequestRules : AbstractValidator<CreateGroupRequest>
         RuleFor(target => target.Name)
             .NotNull()
             .WithMessage(ValidationErrorUtils.GetMessageFrom(ValidationErrorType.NotNull, "Name"))
-            .Length(10)
+            .MaximumLength(150)
             .WithMessage(ValidationErrorUtils.GetMessageFrom(ValidationErrorType.MaximumLength, "Name", 150));
     }
 }

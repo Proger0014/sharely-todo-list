@@ -38,4 +38,9 @@ public class GroupService : IGroupService
 
         return await _groupRepository.Create(newGroup);
     }
+
+    public async Task<bool> IsValidPassword(long groupId, string password)
+    {
+        return await _groupRepository.IsValidPassword(groupId, password);
+    }
 }
