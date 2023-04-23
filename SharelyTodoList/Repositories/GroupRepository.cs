@@ -1,4 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SharelyTodoList.Constants;
+using SharelyTodoList.Exceptions;
 using SharelyTodoList.Interfaces.Repositories;
 using SharelyTodoList.Models.Group;
 
@@ -32,7 +34,15 @@ public class GroupRepository : IGroupRepository
 
     public async Task<bool> IsValidPassword(long groupId, string password)
     {
-        Group? existsGroup = await _dbContext.Groups.AsNoTracking()
+        Group? existsGroup = await GetById(groupId);
+
+        if (existsGroup is null)
+        {
+            throw new NotFoundException(string.Format(
+                ExceptionMessages.EntityNotFound, nameof(Group), groupId));
+        }
+        
+        existsGroup = await _dbContext.Groups.AsNoTracking()
             .Where(group => group.Id == groupId && group.Password == password)
             .FirstOrDefaultAsync();
 

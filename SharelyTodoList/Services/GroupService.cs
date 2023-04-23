@@ -21,7 +21,7 @@ public class GroupService : IGroupService
 
         if (existsGroup is null)
         {
-            throw new EntityNotFoundException(string.Format(
+            throw new NotFoundException(string.Format(
                 ExceptionMessages.EntityNotFound, nameof(Group), groupId));
         }
 

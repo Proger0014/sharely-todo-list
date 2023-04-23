@@ -2,8 +2,8 @@
 
 namespace SharelyTodoList.Exceptions;
 
-public class EntityNotFoundException : ApiException
+public class NotFoundException : ApiException
 {
-    public EntityNotFoundException(string message)
+    public NotFoundException(string message)
         : base(message, HttpStatusCode.NotFound) { }
 }
