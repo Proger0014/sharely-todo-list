@@ -6,7 +6,7 @@ using SharelyTodoList.Contracts.AccessTokens;
 using SharelyTodoList.Contracts.AccessTokens.LoginRequest;
 using SharelyTodoList.Exceptions;
 using SharelyTodoList.Interfaces.Services;
-using SharelyTodoList.Models.AccessToken;
+using SharelyTodoList.Models;
 using SharelyTodoList.Validators;
 
 namespace SharelyTodoList.Controllers;
@@ -15,12 +15,12 @@ public class AuthController : BaseApiController
 {
     private readonly IAccessTokenService _accessTokenService;
     private readonly IGroupService _groupService;
-    private readonly BaseValidators<AccessToken> _accessTokensValidators;
+    private readonly BaseValidators<AccessTokenModel> _accessTokensValidators;
 
     public AuthController(
         IAccessTokenService accessTokenService,
         IGroupService groupService,
-        BaseValidators<AccessToken> accessTokensValidators)
+        BaseValidators<AccessTokenModel> accessTokensValidators)
     {
         _accessTokenService = accessTokenService;
         _groupService = groupService;

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using SharelyTodoList.Contracts.Groups;
 using SharelyTodoList.Contracts.Groups.GetByIdPreviewRequest;
 using SharelyTodoList.Contracts.Groups.GroupCreateRequest;
-using SharelyTodoList.Models.Group;
+using SharelyTodoList.Models;
 using SharelyTodoList.Interfaces.Services;
 
 namespace SharelyTodoList.Controllers;
@@ -13,9 +13,9 @@ namespace SharelyTodoList.Controllers;
 public class GroupsController : BaseApiController
 {
     private readonly IGroupService _groupService;
-    private readonly BaseValidators<Group> _groupValidators;
+    private readonly BaseValidators<GroupModel> _groupValidators;
     
-    public GroupsController(IGroupService groupService, BaseValidators<Group> groupValidators)
+    public GroupsController(IGroupService groupService, BaseValidators<GroupModel> groupValidators)
     {
         _groupService = groupService;
         _groupValidators = groupValidators;
@@ -36,7 +36,7 @@ public class GroupsController : BaseApiController
             return ValidationProblem();
         }
         
-        Group existsGroup = await _groupService
+        GroupModel existsGroup = await _groupService
             .GetById(groupId);
 
         return Ok(new GroupPreviewResponse()

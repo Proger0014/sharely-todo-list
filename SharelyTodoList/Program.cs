@@ -3,8 +3,7 @@ using SharelyTodoList;
 using SharelyTodoList.Extensions;
 using SharelyTodoList.Interfaces.Repositories;
 using SharelyTodoList.Interfaces.Services;
-using SharelyTodoList.Models.AccessToken;
-using SharelyTodoList.Models.Group;
+using SharelyTodoList.Models;
 using SharelyTodoList.Repositories;
 using SharelyTodoList.Services;
 using SharelyTodoList.Validators;
@@ -14,10 +13,10 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddScoped<IGroupRepository, GroupRepository>();
 builder.Services.AddScoped<IGroupService, GroupService>();
 builder.Services.AddScoped<IAccessTokenRepository, AccessTokenRepository>();
-builder.Services.AddScoped<BaseValidators<AccessToken>, AccessTokensValidators>();
+builder.Services.AddScoped<BaseValidators<AccessTokenModel>, AccessTokensValidators>();
 builder.Services.AddScoped<IAccessTokenService, AccessTokenService>();
 
-builder.Services.AddScoped<BaseValidators<Group>, GroupsValidators>();
+builder.Services.AddScoped<BaseValidators<GroupModel>, GroupsValidators>();
 
 // Add services to the container.
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

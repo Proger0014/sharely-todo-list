@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using SharelyTodoList.Entities.AccessToken;
+using SharelyTodoList.Extensions;
 using SharelyTodoList.Interfaces.Repositories;
-using SharelyTodoList.Models.AccessToken;
+using SharelyTodoList.Models;
 
 namespace SharelyTodoList.Repositories;
 
@@ -13,23 +15,25 @@ public class AccessTokenRepository : IAccessTokenRepository
         _dbContext = dbContext;
     }
     
-    public async Task Insert(AccessToken accessToken)
+    public async Task Insert(AccessTokenModel accessToken)
     {
-        _dbContext.AccessTokens?.Add(accessToken);
+        _dbContext.AccessTokens?.Add(accessToken.MapToEntity()!);
         await _dbContext.SaveChangesAsync();
     }
 
-    public async Task<AccessToken?> GetByToken(string token)
+    public async Task<AccessTokenModel?> GetByToken(string token)
     {
-        return await _dbContext.AccessTokens?
+        var accessToken = await _dbContext.AccessTokens?
             .AsNoTracking()
             .SingleOrDefaultAsync(at => at.Token == token)!;
+        
+        return accessToken!.MapToModel();
     }
 
     public async Task RemoveByToken(string token)
     {
-        AccessToken forDeleted = await GetByToken(token);
+        AccessTokenModel? forDeletedModel = await GetByToken(token);
 
-        _dbContext?.AccessTokens?.Remove(forDeleted!);
+        _dbContext?.AccessTokens?.Remove(forDeletedModel.MapToEntity()!);
     }
 }

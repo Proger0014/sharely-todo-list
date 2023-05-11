@@ -2,7 +2,7 @@
 using SharelyTodoList.Exceptions;
 using SharelyTodoList.Interfaces.Repositories;
 using SharelyTodoList.Interfaces.Services;
-using SharelyTodoList.Models.Group;
+using SharelyTodoList.Models;
 
 namespace SharelyTodoList.Services;
 
@@ -15,14 +15,14 @@ public class GroupService : IGroupService
         _groupRepository = groupRepository;
     }
 
-    public async Task<Group> GetById(long groupId)
+    public async Task<GroupModel> GetById(long groupId)
     {
         var existsGroup =  await _groupRepository.GetById(groupId);
 
         if (existsGroup is null)
         {
             throw new NotFoundException(string.Format(
-                ExceptionMessages.EntityNotFound, nameof(Group), groupId));
+                ExceptionMessages.EntityNotFound, nameof(GroupModel), groupId));
         }
 
         return existsGroup;
@@ -30,7 +30,7 @@ public class GroupService : IGroupService
 
     public async Task<long> CreateGroup(string name, string password)
     {
-        var newGroup = new Group()
+        var newGroup = new GroupModel()
         {
             Name = name,
             Password = password
@@ -41,6 +41,8 @@ public class GroupService : IGroupService
 
     public async Task<bool> IsValidPassword(long groupId, string password)
     {
-        return await _groupRepository.IsValidPassword(groupId, password);
+        var existsGroup = await _groupRepository.GetById(groupId);
+
+        return existsGroup?.Password == password;
     }
 }

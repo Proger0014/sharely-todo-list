@@ -1,10 +1,10 @@
 ﻿using SharelyTodoList.Contracts.Groups.GetByIdPreviewRequest;
 using SharelyTodoList.Contracts.Groups.GroupCreateRequest;
-using SharelyTodoList.Models.Group;
+using SharelyTodoList.Models;
 
 namespace SharelyTodoList.Validators;
 
-public class GroupsValidators : BaseValidators<Group>
+public class GroupsValidators : BaseValidators<GroupModel>
 {
     public GroupsValidators()
     {

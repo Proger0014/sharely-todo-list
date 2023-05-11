@@ -1,6 +1,6 @@
 ﻿using SharelyTodoList.Interfaces.Repositories;
 using SharelyTodoList.Interfaces.Services;
-using SharelyTodoList.Models.AccessToken;
+using SharelyTodoList.Models;
 
 namespace SharelyTodoList.Services;
 
@@ -17,7 +17,7 @@ public class AccessTokenService : IAccessTokenService
     {
         string newToken = Guid.NewGuid().ToString();
 
-        await _accessTokenRepository.Insert(new AccessToken()
+        await _accessTokenRepository.Insert(new AccessTokenModel()
         {
             Token = newToken,
             GroupId = id

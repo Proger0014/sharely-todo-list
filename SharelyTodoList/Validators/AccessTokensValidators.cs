@@ -1,9 +1,9 @@
 ﻿using SharelyTodoList.Contracts.AccessTokens.LoginRequest;
-using SharelyTodoList.Models.AccessToken;
+using SharelyTodoList.Models;
 
 namespace SharelyTodoList.Validators;
 
-public class AccessTokensValidators : BaseValidators<AccessToken>
+public class AccessTokensValidators : BaseValidators<AccessTokenModel>
 {
     public AccessTokensValidators()
     {

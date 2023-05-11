@@ -1,6 +1,4 @@
-﻿using SharelyTodoList.Models.AccessToken;
-
-namespace SharelyTodoList.Interfaces.Services;
+﻿namespace SharelyTodoList.Interfaces.Services;
 
 public interface IAccessTokenService
 {

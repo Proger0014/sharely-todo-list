@@ -1,4 +1,4 @@
-﻿namespace SharelyTodoList.Models.AccessToken;
+﻿namespace SharelyTodoList.Entities.AccessToken;
 
 public class AccessToken
 {

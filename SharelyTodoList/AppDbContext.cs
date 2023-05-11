@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using SharelyTodoList.Models.AccessToken;
-using SharelyTodoList.Models.Group;
+using SharelyTodoList.Entities.AccessToken;
+using SharelyTodoList.Entities.Group;
 
 namespace SharelyTodoList;
 
