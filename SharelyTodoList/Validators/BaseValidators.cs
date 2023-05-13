@@ -6,11 +6,11 @@ namespace SharelyTodoList.Validators;
 public abstract class BaseValidators<TSource>
     where TSource : class
 {
-    protected Dictionary<Type, object> Validators { get; init; }
+    protected Dictionary<Type, object>? Validators { get; init; }
 
     public async Task<ValidationResult> Validate<T>(T target)
         where T : class
     {
-        return await ((IValidator<T>)Validators[typeof(T)]).ValidateAsync(target);
+        return await ((IValidator<T>)Validators![typeof(T)]).ValidateAsync(target);
     }
 }

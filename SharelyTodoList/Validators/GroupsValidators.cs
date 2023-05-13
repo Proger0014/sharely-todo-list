@@ -8,12 +8,10 @@ public class GroupsValidators : BaseValidators<GroupModel>
 {
     public GroupsValidators()
     {
-        Dictionary<Type, object> validators = new()
+        Validators = new()
         {
             { typeof(CreateGroupRequest), new CreateGroupRequestRules() },
             { typeof(GetByIdPreviewRequest), new GetByIdPreviewRequestRules() }
         };
-
-        Validators = validators;
     }
 }

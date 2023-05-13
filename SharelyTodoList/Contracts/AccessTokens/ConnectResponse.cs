@@ -1,10 +1,10 @@
 ﻿namespace SharelyTodoList.Contracts.AccessTokens;
 
-public class LoginResponse
+public class ConnectResponse
 {
     public string AccessToken { get; set; }
 
-    public LoginResponse()
+    public ConnectResponse()
     {
         AccessToken = string.Empty;
     }

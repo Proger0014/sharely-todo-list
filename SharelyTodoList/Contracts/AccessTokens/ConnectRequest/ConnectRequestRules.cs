@@ -2,14 +2,14 @@
 using SharelyTodoList.Constants;
 using SharelyTodoList.Utils;
 
-namespace SharelyTodoList.Contracts.AccessTokens.LoginRequest;
+namespace SharelyTodoList.Contracts.AccessTokens.ConnectRequest;
 
-public class LoginRequestRules : AbstractValidator<LoginRequest>
+public class ConnectRequestRules : AbstractValidator<ConnectRequest>
 {
-    public LoginRequestRules()
+    public ConnectRequestRules()
     {
-        const string groupId = nameof(LoginRequest.GroupId);
-        const string password = nameof(LoginRequest.Password);
+        const string groupId = nameof(ConnectRequest.GroupId);
+        const string password = nameof(ConnectRequest.Password);
         
         RuleFor(target => target.GroupId)
             .GreaterThanOrEqualTo(BaseModelConstants.MinIdValue)

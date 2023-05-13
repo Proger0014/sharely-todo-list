@@ -1,4 +1,4 @@
-﻿using SharelyTodoList.Contracts.AccessTokens.LoginRequest;
+﻿using SharelyTodoList.Contracts.AccessTokens.ConnectRequest;
 using SharelyTodoList.Models;
 
 namespace SharelyTodoList.Validators;
@@ -7,11 +7,9 @@ public class AccessTokensValidators : BaseValidators<AccessTokenModel>
 {
     public AccessTokensValidators()
     {
-        Dictionary<Type, object> validators = new()
+        Validators = new()
         {
-            { typeof(LoginRequest), new LoginRequestRules() }
+            { typeof(ConnectRequest), new ConnectRequestRules() }
         };
-
-        Validators = validators;
     }
 }
