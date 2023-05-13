@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using SharelyTodoList.Models;
 
 namespace SharelyTodoList.Entities.Group;
 
@@ -10,9 +11,9 @@ public class GroupTypeConfiguration : IEntityTypeConfiguration<Group>
         builder.HasKey(g => g.Id);
 
         builder.Property(g => g.Name)
-            .HasMaxLength(200);
+            .HasMaxLength(GroupModel.NameMaxLength);
 
         builder.Property(g => g.Password)
-            .HasMaxLength(50);
+            .HasMaxLength(GroupModel.PasswordMaxLength);
     }
 }

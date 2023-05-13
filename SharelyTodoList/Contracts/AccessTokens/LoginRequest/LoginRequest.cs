@@ -3,10 +3,5 @@
 public class LoginRequest
 {
     public long GroupId { get; set; }
-    public string Password { get; set; }
-
-    public LoginRequest()
-    {
-        Password = string.Empty;
-    }
+    public string Password { get; set; } = string.Empty;
 }

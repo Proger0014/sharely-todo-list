@@ -2,11 +2,8 @@
 
 public class AccessTokenModel
 {
-    public string Token { get; set; }
-    public long GroupId { get; set; }
+    public const int TokenMaxLength = 150;
 
-    public AccessTokenModel()
-    {
-        Token = string.Empty;
-    }
+    public string Token { get; set; } = string.Empty;
+    public long GroupId { get; set; }
 }

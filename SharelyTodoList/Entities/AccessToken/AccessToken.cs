@@ -2,11 +2,6 @@
 
 public class AccessToken
 {
-    public string Token { get; set; }
+    public string Token { get; set; } = string.Empty;
     public long GroupId { get; set; }
-
-    public AccessToken()
-    {
-        Token = string.Empty;
-    }
 }
